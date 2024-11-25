@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learing Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+
+<body>
+    <h1>Hello :)</h1>
+
+    <div id="app">
+        <div v-if="showIt">
+            <p>{{ title }} - {{ sultan }} - {{ age }}</p>
+        </div>
+
+        <button v-on:click="age++">Increase age</button>
+        <button v-on:click="age--">Decrease age</button>
+        <div @click="changeTitle('Istanbul')">Click</div>
+        <div @click="toggleShow">
+            <span v-if="showIt">Hide it</span>
+            <span v-else>Show it</span>
+            <!-- <span v-if="!showIt">Show it</span> -->
+        </div>
+
+        <div v-show="showIt">Showing text</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
