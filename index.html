@@ -5,6 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learing Vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        body {
+            background-color: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        p,
+        h3,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.favourite {
+            background-color: #ff9ed2;
+            color: #fff;
+
+        }
+
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background-color: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,6 +68,28 @@
         <div class="newOne">
             This is from Local
         </div>
+
+        <div class="books">
+            <ul>
+                <li v-for="book in books" :class="{ favourite: book.isFav }" @click="toggleFavourite(book)">
+                    <img :src="book.img" :alt="book.name">
+                    <h3>{{ book.name }}</h3>
+                    <p>{{ book.author }}</p>
+                </li>
+            </ul>
+            <!-- <a v-bind:href="url">My Portfolio Website</a> -->
+            <a :href="url">My Portfolio Website</a>
+        </div>
+        <div>
+            <h3>Favourite Books</h3>
+            <span v-for="book in filteredBook">{{ book.name }}, </span>
+        </div>
+
+        <!-- Mouse Event -->
+        <div class="box" @mouseover="handleEvent($event, 5)">Mouseover</div>
+        <div class="box" @mouseleave="handleEvent">Mouseleave</div>
+        <div class="box" @dblclick="handleEvent">Double Click</div>
+        <div class="box" @mousemove="handleMouse">Position - {{ x }} {{ y }}</div>
     </div>
 
     <script src="app.js"></script>
